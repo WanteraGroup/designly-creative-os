@@ -5,7 +5,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Designly Creative OS — AI alapú kreatív platform</title>
 <meta name="description" content="A Designly Studio AI-alapú kreatív platformja: alkoss, tervezz, streameld és dominálj — sablonok, brand eszközök és AI-grafikák egy helyen.">
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
   :root{
     --gold:#d9a94e;
@@ -18,8 +17,8 @@
     --line-soft:rgba(217,169,78,.14);
     --txt:#eceef3;
     --muted:#9ba3b2;
-    --serif:'Cormorant Garamond',Georgia,'Times New Roman',serif;
-    --sans:'Inter','Segoe UI',system-ui,-apple-system,sans-serif;
+    --serif:Georgia,'Times New Roman',serif;
+    --sans:'Segoe UI',system-ui,-apple-system,sans-serif;
     --nav-h:74px;
   }
   *{margin:0;padding:0;box-sizing:border-box}
@@ -86,12 +85,7 @@
     background:none;border:none;transition:color .25s ease;
   }
   .lang:hover{color:var(--gold-hi)}
-  .lang .globe{
-    width:19px;height:19px;border-radius:50%;
-    border:1px solid var(--line);position:relative;flex-shrink:0;
-  }
-  .lang .globe::before{content:"";position:absolute;top:0;bottom:0;left:3px;right:3px;border-radius:50%/40%;border:1px solid rgba(217,169,78,.35)}
-  .lang .globe::after{content:"";position:absolute;left:0;right:0;top:50%;border-top:1px solid rgba(217,169,78,.35)}
+  .lang .globe{border:1px solid var(--line);border-radius:50%;width:18px;height:18px;flex-shrink:0}
   .lang .caret{font-size:.55rem;opacity:.7}
 
   .btn{
@@ -130,10 +124,10 @@
   }
   .bg{
     position:absolute;inset:0;
-    background-image:url("__BG_IMAGE__");
-    background-size:cover;background-position:center 30%;
-    filter:saturate(1.02) contrast(1.05);
-    transform:scale(1.03);
+    background:
+      radial-gradient(60% 45% at 50% 30%,rgba(217,169,78,.14),rgba(0,0,0,0) 70%),
+      radial-gradient(75% 55% at 20% 75%,rgba(40,90,160,.18),rgba(0,0,0,0) 70%),
+      linear-gradient(180deg,#060a12 0%,#0a1220 40%,#050810 75%,#04060a 100%);
     animation:drift 46s ease-in-out infinite alternate;
   }
   @keyframes drift{
@@ -150,7 +144,7 @@
 
   .rune{
     position:absolute;
-    font-family:'Noto Sans Runic','Segoe UI Symbol',serif;
+    font-family:'Segoe UI Symbol',Georgia,serif;
     color:var(--gold);
     text-shadow:0 0 7px rgba(217,169,78,.65);
     opacity:.4;user-select:none;pointer-events:none;
@@ -163,8 +157,8 @@
     93%{opacity:.5;text-shadow:0 0 9px rgba(217,169,78,.6)}
   }
   .rune.climb{
-    animation-name:runeClimb;animation-timing-function:linear;
-    animation-iteration-count:infinite;will-change:transform,opacity;opacity:0;
+    animation:runeClimb 10s linear infinite;
+    will-change:transform,opacity;opacity:0;
   }
   @keyframes runeClimb{
     0%{transform:translateY(0) scale(.85);opacity:0}
@@ -396,7 +390,7 @@
   .band{
     position:relative;overflow:hidden;
     border-top:1px solid var(--line-soft);
-    background:#04060a;
+    background:linear-gradient(180deg,#04060a,#0b1424 50%,#04060a);
     min-height:min(92vh,760px);
     display:grid;grid-template-columns:1fr minmax(300px,.86fr) 1fr;
     align-items:center;gap:30px;
@@ -404,16 +398,25 @@
   }
   .band-art{
     position:absolute;inset:0;
-    background-image:url("__BG_IMAGE__");
-    background-size:cover;background-position:center 62%;
-    opacity:.3;filter:brightness(.6) saturate(.8);
+    background:
+      radial-gradient(50% 60% at 15% 50%,rgba(217,169,78,.10),rgba(0,0,0,0) 70%),
+      radial-gradient(50% 60% at 85% 50%,rgba(40,90,160,.12),rgba(0,0,0,0) 70%);
   }
   .band-side{
     position:relative;z-index:2;border-radius:12px;overflow:hidden;
     border:1px solid var(--line-soft);aspect-ratio:4/3;
     box-shadow:0 24px 60px rgba(0,0,0,.7);
+    background:
+      radial-gradient(60% 70% at 40% 35%,rgba(217,169,78,.18),rgba(0,0,0,0) 70%),
+      linear-gradient(160deg,#0d1626 0%,#070c15 55%,#0a1120 100%);
   }
-  .band-side img{width:100%;height:100%;object-fit:cover;filter:brightness(.78) saturate(.95)}
+  .band-side::after{
+    content:"ᛞ";
+    position:absolute;inset:0;display:grid;place-items:center;
+    font-size:clamp(2rem,5vw,4rem);color:rgba(217,169,78,.45);
+    text-shadow:0 0 30px rgba(217,169,78,.6);
+  }
+  .band-side.alt-side::after{content:"ᛉ";color:rgba(150,200,255,.4);text-shadow:0 0 30px rgba(120,180,255,.55)}
   .band-mid{position:relative;z-index:2;text-align:center}
   .band-mid .kick{
     font-size:.6rem;letter-spacing:.44em;text-transform:uppercase;color:var(--gold);margin-bottom:20px;
@@ -459,9 +462,8 @@
   .section.darker{background:linear-gradient(180deg,#04060a,#070b13 50%,#04060a)}
   .section.darker::before{
     content:"";position:absolute;inset:0;
-    background-image:url("__BG_IMAGE__");
-    background-size:cover;background-position:center 68%;
-    opacity:.12;filter:grayscale(.4) brightness(.6);
+    background:
+      radial-gradient(60% 50% at 50% 0%,rgba(217,169,78,.07),rgba(0,0,0,0) 70%);
   }
   .section .shell{position:relative;z-index:2}
   .sec-head{text-align:center;max-width:780px;margin:0 auto 62px}
@@ -548,9 +550,7 @@
   }
   .cta::before{
     content:"";position:absolute;inset:0;
-    background-image:url("__BG_IMAGE__");
-    background-size:cover;background-position:center 34%;
-    opacity:.2;filter:brightness(.58);
+    background:radial-gradient(60% 60% at 50% 40%,rgba(217,169,78,.10),rgba(0,0,0,0) 72%);
   }
   .cta .shell{position:relative;z-index:2}
   .cta p{color:var(--muted);max-width:580px;margin:20px auto 36px;line-height:1.72;font-size:.95rem}
@@ -765,9 +765,7 @@
 <section class="band" id="letrehozas">
   <div class="band-art" aria-hidden="true"></div>
 
-  <figure class="band-side reveal">
-    <img src="__BG_IMAGE__" alt="Műhely kelta mintákkal és gyertyákkal" loading="lazy">
-  </figure>
+  <div class="band-side reveal" aria-hidden="true"></div>
 
   <div class="band-mid reveal">
     <div class="kick">A kreativitás mindenkié</div>
@@ -783,9 +781,7 @@
     </div>
   </div>
 
-  <figure class="band-side reveal">
-    <img src="__BG_IMAGE__" alt="Éjszakai fantasy táj hollókkal" loading="lazy">
-  </figure>
+  <div class="band-side alt-side reveal" aria-hidden="true"></div>
 
   <div class="vertical-note" aria-hidden="true">Nem csak tervezünk, világokat építünk.</div>
 </section>
@@ -904,7 +900,7 @@
     <div class="sec-head reveal">
       <div class="kick">Stúdió</div>
       <h2 class="big">Nem csak tervezünk — <em>világokat építünk</em></h2>
-      <p>A Designly csapata a sötét fantasy esztétikától a tiszta márkaarculatig minden irányban otthon van. A platformot alkotóknak építettük, akik nem akarnak kompromisszumot kötni.</p>
+      <p id="rolunk">A Designly csapata a sötét fantasy esztétikától a tiszta márkaarculatig minden irányban otthon van. A platformot alkotóknak építettük, akik nem akarnak kompromisszumot kötni.</p>
     </div>
     <div class="cards">
       <article class="card reveal"><span class="glyph" aria-hidden="true"></span><h3>Saját stílus</h3><p>Mentsd el a márkád színeit, betűit és hangulatát — minden generálás azonnal a te világodban születik.</p></article>
