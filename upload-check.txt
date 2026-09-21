@@ -1,1 +1,1 @@
-Ellenorzes: ennyi bajt kell atmennie.
+Feltoltesi proba: az index.html vegleges tartalma jon.
